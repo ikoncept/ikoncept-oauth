@@ -30,27 +30,27 @@ class AuthController extends Controller
         }
 
         $user = Socialite::driver('ikoncept')->user();
-        $has_access = false;
+        $has_access = true;
         $app_redirect = config('services.ikoncept.redirect');
-        $sites = $user->user['sites'];
+        // $sites = $user->user['sites'];
 
-        if (in_array($app_redirect, $sites)) {
-            $has_access = true;
-        }
+        // if (in_array($app_redirect, $sites)) {
+        //     $has_access = true;
+        // }
 
-        if (in_array('*', $sites)) {
-            $has_access = true;
-        }
+        // if (in_array('*', $sites)) {
+        //     $has_access = true;
+        // }
 
-        // Banned from everything
-        if (in_array('!', $sites)) {
-            $has_access = false;
-        }
+        // // Banned from everything
+        // if (in_array('!', $sites)) {
+        //     $has_access = false;
+        // }
 
-        if (! $has_access) {
-            return redirect()->route('login')
-                ->with('permissionError', 'Du har inte behörighet till denna applikationen');
-        }
+        // if (! $has_access) {
+        //     return redirect()->route('login')
+        //         ->with('permissionError', 'Du har inte behörighet till denna applikationen');
+        // }
 
         if (auth()->guest()) {
             $userModel = config('ikoncept-oauth.user_model');
