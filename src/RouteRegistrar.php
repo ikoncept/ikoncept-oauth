@@ -32,7 +32,9 @@ class RouteRegistrar
      */
     public function all(): void
     {
-        Route::get('login/ikoncept',  [\Ikoncept\IkonceptOauth\Http\Controllers\AuthController::class, 'redirectToProvider']);
-        Route::get('login/ikoncept/callback', [\Ikoncept\IkonceptOauth\Http\Controllers\AuthController::class, 'handleProviderCallback']);
+        Route::get('login/ikoncept',  [\Ikoncept\IkonceptOauth\Http\Controllers\AuthController::class, 'redirectToProvider'])
+            ->middleware(['web']);
+        Route::get('login/ikoncept/callback', [\Ikoncept\IkonceptOauth\Http\Controllers\AuthController::class, 'handleProviderCallback'])
+            ->middleware(['web']);
     }
 }

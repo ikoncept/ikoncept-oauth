@@ -11,6 +11,8 @@ class IkonceptOauthServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../config/ikoncept-oauth.php' => config_path('ikoncept-oauth.php'),
         ], 'config');
+
+        IkonceptOauth::routes();
     }
 
     public function register(): void
