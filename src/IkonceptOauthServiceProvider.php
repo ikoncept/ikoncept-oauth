@@ -17,7 +17,10 @@ class IkonceptOauthServiceProvider extends ServiceProvider
 
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/ikoncept-oauth.php', 'ikoncept-oauth');
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/ikoncept-oauth.php',
+           'services.ikoncept'
+         );
         $this->app->register(EventServiceProvider::class);
     }
 }
