@@ -36,5 +36,9 @@ class RouteRegistrar
             ->middleware(['web']);
         Route::get('login/ikoncept/callback', [\Ikoncept\IkonceptOauth\Http\Controllers\AuthController::class, 'handleProviderCallback'])
             ->middleware(['web']);
+        Route::get('auth/ikoncept',  [\Ikoncept\IkonceptOauth\Http\Controllers\AuthController::class, 'redirectToProvider'])
+            ->middleware(['web']);
+        Route::get('auth/ikoncept/callback', [\Ikoncept\IkonceptOauth\Http\Controllers\AuthController::class, 'handleProviderCallback'])
+            ->middleware(['web']);
     }
 }
