@@ -53,7 +53,7 @@ class AuthController extends Controller
         // }
 
         if (auth()->guest()) {
-            $userModel = config('ikoncept-oauth.user_model');
+            $userModel = config('services.ikoncept.user_model');
             $existingUser = (new $userModel())->where('email', $user->email)->first();
             if (! $existingUser) {
                 $user->getName();
